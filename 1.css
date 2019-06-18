@@ -22,7 +22,10 @@
     margin-left: calc(0% - 0px);
     grid-area: ava ava;
 }
-
+nav{
+  
+  background-color:black;
+}
 nav > ul {
     display: flex;
     width: 35vw;
@@ -31,13 +34,13 @@ nav > ul {
   }
    nav > ul > li {
     list-style: none;
-    padding: 50px;
+    padding: 64px;
     border-radius: 4px;
   }
   nav > img{
-    margin-right:25px;
+        margin-right: 25px;
     width: 150px;
-    height:150px;
+    height: 150px;
     border-radius: 50%;
     border-top: solid white 3px;
     border-left: solid white 3px;
@@ -45,9 +48,12 @@ nav > ul {
     padding: 2px;
     margin-top: 1px;
     margin-left: calc(0% - 0px);
-    grid-area: ava ava;
     
   }
   nav > ul > li:hover {
     background-color:pink;
   }
+  
+.form{
+  margin: 17%;
+}

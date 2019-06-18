@@ -1,10 +1,11 @@
 *{}
+
 .input{
     margin:auto;
     width: 350px;
 }
 .form{
-  margin: 10%;
+  margin: 17%;
 }
 .form-control{
     background-color: #ffc0cb;
@@ -16,17 +17,17 @@
     margin-right:25px;
     width: 150px;
     height:150px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     border-top: solid white 3px;
     border-left: solid white 3px;
     border-right: solid white 3px;
     padding: 2px;
     margin-top: 1px;
-    margin-left: calc(0% - 0px);
+    margin-left:701px;
     grid-area: ava ava;
 }
 nav {
-  display: flex;
+  /* display: flex; */
   position: fixed;
   top: 0;
   min-height: 50 px;
@@ -34,6 +35,17 @@ nav {
   align-items: right;
   width: 100%;
   background-color: black;
+}
+nav > ul {
+  display: flex;
+  width: 35vw;
+  flex-direction: row;
+  justify-content: space-around;
+}
+ nav > ul > li {
+  list-style: none;
+  padding: 50px;
+  border-radius: 4px;
 }
 div > li:hover {
   background-color:black;
@@ -51,9 +63,7 @@ div > li
   padding: 8px;
   border-radius: 0px;
 }
-.navbar navbar-expand-lg navbar-light bg-light{
-  padding:0px;
-}
+
 footer{
   background-color:black;
   padding:0.8em;
@@ -61,7 +71,11 @@ footer{
   text-align:center;
   bottom: 1px;
 }
-
+a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: transparent;
+}
 
 nav > ul {
     display: flex;
@@ -91,3 +105,68 @@ nav > ul {
   nav > ul > li:hover {
     background-color:pink;
   }
+
+nav{
+    color: white;
+    height: 157px;
+}
+nav ul li{
+  height: 150px;
+}
+.logo{
+  float: initial
+}
+#height{
+  height:150px
+}
+#box-container {
+  display: static;
+  height: 500px;
+}
+#box-1 {
+  background-color: rgb(203, 203, 204);
+  width: 50%;
+  height: 602px;
+  float: left;
+  position: static;
+}
+
+#box-2 {
+  background-color: rgb(190, 186, 184);
+  width: 50%;
+  height: 602px;
+  float: right;
+  position: static
+}
+table {
+  width: 100%;
+  border: 1px solid black;
+}
+
+th {
+  height: 50px;
+}
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+#bar{
+  position: relative;
+}
+.innn{
+  position: absolute;
+  z-index: 12;
+  top: 374px;
+  left: 799px;
+  width: 691px;
+  height: 349px;
+}
+h4{
+  height: 14px;
+  margin: 9px;
+  border: 1px;
+  padding: 1px;
+}
