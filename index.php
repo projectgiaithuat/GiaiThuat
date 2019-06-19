@@ -41,7 +41,7 @@
                 <a href="#login-box" class="login-window button"style="background-color:green">Thêm Học Sinh :))</a>
                 <div id="login-box" class="login">
                     <p class="login_title"> Thêm Học Sinh</p>
-                    <a href="index.php" class="close"><img src="close.png" class="img-close" title="Close Window"
+                    <a href="index.php" class="close"><img src="images/close.png" class="img-close" title="Close Window"
                             alt="Close" /></a>
                     <form method="POST" class="login-content" action="add.php">
                         <label class="username">
@@ -71,7 +71,7 @@
                 <a href="#edit-box" class="edit-window button"style="background-color:yellow">Sửa Học Sinh :V</a>
                 <div id="edit-box" class="login">
                     <p class="login_title">Chỉnh sửa thông tin học sinh</p>
-                    <a href="index.php" class="close"><img src="close.png" class="img-close" title="Close Window"
+                    <a href="index.php" class="close"><img src="images/close.png" class="img-close" title="Close Window"
                             alt="Close" /></a>
                     <form method="POST" class="login-content" action="edit.php">
                         <label class="username">
@@ -106,7 +106,7 @@
                 <a href="#delete-box" class="delete-window button" style="background-color:red">Xóa Học Sinh :((</a>
                 <div id="delete-box" class="login">
                     <p class="login_title">"Xóa" học sinh</p>
-                    <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window"
+                    <a href="#" class="close"><img src="images/close.png" class="img-close" title="Close Window"
                             alt="Close" /></a>
                     <form method="POST" class="login-content" action="delete.php">
                         <label class="username">
@@ -154,21 +154,21 @@
                 </table>
             </div>
             <div id="box-2" style=" z-index:1">
-                <img src="soLop.png" alt="sơ đồ lớp học" style="position:static">
+                <img src="images/Lop2.png" alt="sơ đồ lớp học" style="position:static">
                 <div class="innn">
                 <?php require("sort.php"); $count=0; ?><!-- biến count để xuống hàng tiếp -->
                      
 					 <h4>
-					 <?php  for($i=0;$i<$n/2;$i++) : ?>
+					 <?php  for($i=0;$i<(int)($n/2);$i++) : ?>
 					 <?php if($count==3): echo "</h4><br><h4>"; $count=0; endif;?>
  
 					 <?php printf("%7s",$array[$i]['ten_hs']);?>
 					 <?php echo "-"; ?>
 					 <?php printf("%7s",$array[$n-$i-1]['ten_hs']); $count++;  ?>
-					 <?php echo "&emsp;&emsp;";?>
+					 <?php echo "&emsp;&emsp;&ensp;&ensp;";?>
 					 
-					 <?php endfor; ?></h4>
-					 <h4><?php if($n%2 !=0) printf("%7s",$array[$n/2]['ten_hs']) ?></h4>
+					 <?php endfor; ?></h4><br>
+					 <h4><?php if($n%2 !=0) printf("%7s",$array[(int)($n/2)]['ten_hs']) ?></h4>
                 </div>
             </div>
         </div>
