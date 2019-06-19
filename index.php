@@ -38,7 +38,7 @@
         <div id="box-container">
             <div id="box-1" style="overflow:auto;">
                 <!-- dialog thêm hs -->
-                <a href="#login-box" class="login-window button">Thêm HS</a>
+                <a href="#login-box" class="login-window button"style="background-color:green">Thêm Học Sinh :))</a>
                 <div id="login-box" class="login">
                     <p class="login_title"> Thêm Học Sinh</p>
                     <a href="index.php" class="close"><img src="close.png" class="img-close" title="Close Window"
@@ -68,17 +68,17 @@
                     </form>
                 </div>
                 <!-- dialog sửa học sinh -->
-                <a href="#edit-box" class="edit-window button">Sửa HS</a>
+                <a href="#edit-box" class="edit-window button"style="background-color:yellow">Sửa Học Sinh :V</a>
                 <div id="edit-box" class="login">
                     <p class="login_title">Chỉnh sửa thông tin học sinh</p>
                     <a href="index.php" class="close"><img src="close.png" class="img-close" title="Close Window"
                             alt="Close" /></a>
                     <form method="POST" class="login-content" action="edit.php">
                         <label class="username">
-                            <span>Tên học sinh cần sửa</span>
+                            <span style="color:red">Tên học sinh cần sửa</span>
                             <input id="ten_hs_sua" name="ten_hs_sua" value="" type="text" autocomplete="on"
                                 placeholder="Tên học sinh cần sửa">
-                                <span style="color:red">Thay thế thông tin trước đó</span>
+                                <span style="color:green">Thay thế thông tin trước đó</span>
                         <label class="username">
                             <span>Họ</span>
                             <input id="ho_hs_edit" name="ho_hs_edit" value="" type="text" autocomplete="on"
@@ -103,14 +103,14 @@
                     </form>
                 </div>
                 <!-- dialog xóa hs -->
-                <a href="#delete-box" class="delete-window button">Xóa HS</a>
+                <a href="#delete-box" class="delete-window button" style="background-color:red">Xóa Học Sinh :((</a>
                 <div id="delete-box" class="login">
                     <p class="login_title">"Xóa" học sinh</p>
                     <a href="#" class="close"><img src="close.png" class="img-close" title="Close Window"
                             alt="Close" /></a>
                     <form method="POST" class="login-content" action="delete.php">
                         <label class="username">
-                            <span>Tên học sinh cần xóa</span>
+                            <span style="color:red">Tên học sinh cần xóa</span>
                             <input id="ten_hs_xoa" name="ten_hs_xoa" value="" type="text" autocomplete="on"
                                 placeholder="Tên học sinh cần xóa">
                         
@@ -156,12 +156,19 @@
             <div id="box-2" style=" z-index:1">
                 <img src="soLop.png" alt="sơ đồ lớp học" style="position:static">
                 <div class="innn">
-                    <h4>huy---  hùng&emsp;&emsp; cao---akdjf------adfa---fasd</h4><br>
-                    <h4>dungá</h4><br>
-                    <h4>sakfjs  aksdf</h4><br>
-                    <h4>akdf  ádfj</h4><br>
-                    <h4> akdjf ádf </h4><br>
-                    <h4>aksjf faksf</h4><br>
+                <?php require("sort.php"); $count=0; ?><!-- biến count để xuống hàng tiếp -->
+                     
+					 <h4>
+					 <?php  for($i=0;$i<$n/2;$i++) : ?>
+					 <?php if($count==3): echo "</h4><br><h4>"; $count=0; endif;?>
+ 
+					 <?php printf("%7s",$array[$i]['ten_hs']);?>
+					 <?php echo "-"; ?>
+					 <?php printf("%7s",$array[$n-$i-1]['ten_hs']); $count++;  ?>
+					 <?php echo "&emsp;&emsp;";?>
+					 
+					 <?php endfor; ?></h4>
+					 <h4><?php if($n%2 !=0) printf("%7s",$array[$n/2]['ten_hs']) ?></h4>
                 </div>
             </div>
         </div>

@@ -1,76 +1,85 @@
+<?php
+require("dbconnect.php");
+require("lib.php");
+$data=$_POST;
+if (isset($data['username']) && isset($data['password1'])) {
+    // kiểm tra kí tự đặc biệt
+    if(check_special($data['username'])) alter("Username không được chứa kí tự đặc biệt");
+    if(check_special($data['password1'])) alter("Password không được chúa kí tự đặc biệt");
+    // $username = $data['username'];
+    // $password = $data['password'];
+
+    // kiểm tra tài khoản tồn tại trong hệ thống
+    mysqli_select_db($db_connect,"giaithuat1");
+    $sql = "SELECT * FROM `giao_vien` WHERE `user_name`='".$data['username']."' AND `password`='".MD5($data['password1'])."'";
+    $result = mysqli_query($db_connect, $sql);
+    $user_array = [];
+    while($user = mysqli_fetch_assoc($result)) {
+        $user_array[] = $user;
+    }
+    
+    // nếu tài khoản không tổn tài hoặc không chính xác
+    if(sizeof($user_array)==0) 
+    {
+        alter("Tài khoản hoặc mật khẩu không chính xác.");
+        // login();
+    }
+    else{
+        index();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="boostrap4-3-1/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="easyui.css">
-    <link rel="stylesheet" type="text/css" href="icon.css">
-    <link rel="stylesheet" type="text/css" href="color.css">
-    <link rel="stylesheet" type="text/css" href="demo.css">
-    <script src="jquery-3.4.1.js"></script>
-    <script src="jquery.easyui.min.js"></script>
+    <link rel="text/javascript" href="jquery-3.4.1.js">
     <link rel="stylesheet" href="fileCss.css">
     <link rel="stylesheet" href="1.css">
+    <script src="jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="dialog.css" />
+    <script type="text/javascript" src="ajax.googleapis.com-ajax-libs-jquery-1.10.2-jquery.min.js"></script>
+	<script type="text/javascript" src="dialog.js"></script>
     <title>Đăng nhập</title>
-
-    <link rel="stylesheet" href="1.css">
 </head>
 
 <body>
     <header>
-        <nav id="bar">
+        <nav id="bar" style="position:static">
             <img src="images\logoPrj.png" alt="LogoKit" height="50" width="50" style="float: left;" />
             <ul>
-                <li style="height:150px"><a class="link" href="#header"> Lớp </a></li>
-                <li style="height:150px"><a class="link" href="#about"> Nhập </a></li>
-                <li style="height:150px"><a class="link" href="#feature">Sắp xếp</a></li>
+                <li id="height"><a class="link" href="#header"> </a></li>
+                <li id="height"><a class="link" href="#header"> </a></li>
+                <li id="height"><a class="link" href="#header"> </a></li>
+                <li id="height"><a class="link" href="#header"> </a></li>
+                <li id="height"><a class="link" href="#header"> Đôi </a></li>
+                <li id="height"><a class="link" href="#about"> Bạn </a></li>
+                <li id="height"><a class="link" href="#feature"> Cùng</a></li>
+                <li id="height"><a class="link" href="#feature"> Tiến</a></li>
+                <li id="height"><a class="link" href="#header"> </a></li>
             </ul>
         </nav>
-        <!-- <nav class="navbar navbar-expand bg-faded" class="bar">
-
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <div class="logo" class="box">
-                        <a href="https://www.facebook.com/kitclubKMA/"><img class="imge" src="images\logoPrj.png"
-                                alt="LogoKit" style="width:140px" href="https://www.facebook.com/kitclubKMA/"
-                                class="img-fluid"></a>
-
-                    </div>
-                </li>
-                <li>
-                    <a style="color: #ffffff" class="nav-link" href="#">Lớp <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a style="color: #ffffff" class="nav-link" href="#">Nhập</a>
-                </li>
-                <li class="nav-item">
-                    <a style="color: #ffffff" class="nav-link" href="#">Sắp xếp</a>
-                </li>
-            </ul>
-        </nav> -->
     </header>
-
     <!-- end header -->
     <div class="content">
-        <div class="form" class="center-container" style="margin: 17%">
-
+        <div class="form" class="center-container" style="margin: 14%">
             <div class="input">
-                <form action="">
-                    <h3><Label>LOGIN QUICK </Label></h3>
+                <form method="POST" action="login.php" role="form" enctype="multipart/form-data">
+                    <h3><Label>Đăng nhập </Label></h3>
                     <div class="form-group">
-                        <!-- <label for="exampleInputEmail1">E-mail</label> -->
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="E-mail">
+                        <input type="text" class="form-control" id="username" name="username" 
+                            placeholder="Tài khoản">
                     </div>
                     <div class="form-group">
-                        <!-- <label for="exampleInputPassword1">Password</label> -->
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" name="password1" placeholder="Mật khẩu">
                     </div>
-                    <a href="#" style="color:black">Forgot Password ?</a><br>
-                    <button type="submit" class="btn ">Login</button>
+                    <a href="#" style="color:black">Quên mật khẩu ?</a><br>
+                    <button type="submit" class="btn " name="login">Đăng Nhập</button>
                 </form>
             </div>
         </div>

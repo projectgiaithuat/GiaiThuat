@@ -15,4 +15,8 @@ function index(){
 	echo'<a href="index.php"></a>';
 	echo'<META http-equiv="refresh" content="0;URL=index.php">';
 }
+function login(){
+	echo'<a href="login.php"></a>';
+	echo'<META http-equiv="refresh" content="0;URL=login.php">';
+}
 ?>
